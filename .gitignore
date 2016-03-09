@@ -1,0 +1,7 @@
+# Binary files
+avr-lcd
+*.o
+*.hex
+
+# VIM temp files
+*.swp
