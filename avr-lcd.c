@@ -2,6 +2,7 @@
 #include <avr/io.h>
 #include <inttypes.h>
 #include <stdlib.h>
+#include "lcd.h"
 
 void init(void);
 
@@ -19,6 +20,9 @@ void init(void) {
 	/* Initialize IO registers */
 	DDRA = 0xFF;
 	DDRB = 0xFF;
+
+	/* Initialize subsystems */
+	lcdInit();
 
 	/* Disable interrupts */
 	cli();

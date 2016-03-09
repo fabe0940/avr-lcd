@@ -27,7 +27,8 @@ $(APPLICATION_NAME) : $(OBJ)
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
 
-avr-lcd.c :
+avr-lcd.c : lcd.h
+lcd.c : lcd.h
 
 clean :
 	\rm -f $(APPLICATION_NAME) $(APPLICATION_NAME).hex $(OBJ)
