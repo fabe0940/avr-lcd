@@ -2,14 +2,13 @@
 #include <avr/io.h>
 #include <inttypes.h>
 #include <stdlib.h>
-#include "lcd.h"
+#include "lcd/lcd.h"
 
 void init(void);
 
 int main(void) {
 	init();
 
-	/* Main loop */
 	while (1) {
 	}
 	
@@ -17,15 +16,7 @@ int main(void) {
 }
 
 void init(void) {
-	/* Initialize IO registers */
-	DDRA = 0xFF;
-	DDRB = 0xFF;
-
-	/* Initialize subsystems */
-	lcdInit();
-
-	/* Disable interrupts */
-	cli();
+	lcd_init();
 
 	return;
 }
