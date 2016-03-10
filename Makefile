@@ -1,6 +1,6 @@
 APPLICATION_NAME := avr-lcd
 CC := avr-gcc
-CFLAGS := -mmcu=atmega32 -O0
+CFLAGS := -mmcu=atmega32 -Wall -Wextra -Wpedantic -O2 -DF_CPU=8000000UL
 SRC := $(wildcard *.c)
 OBJ := $(patsubst %.c, %.o, $(SRC))
 LCD_SRC := $(wildcard lcd/*.c)
@@ -19,7 +19,7 @@ all : $(APPLICATION_NAME)
 
 install : $(APPLICATION_NAME)
 	avrdude -q -q -p atmega32 -P $(DEV) -c stk500v2 \
-		-U lfuse:w:$(CLOCK_1MHz):m \
+		-U lfuse:w:$(CLOCK_8MHz):m \
 		-U flash:w:$(APPLICATION_NAME).hex:i
 
 $(APPLICATION_NAME) : $(OBJ) $(LCD_OBJ)

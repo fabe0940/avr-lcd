@@ -1,7 +1,8 @@
-#include <avr/interrupt.h>
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <inttypes.h>
 #include <stdlib.h>
+#include <util/delay.h>
 #include "lcd/lcd.h"
 
 void init(void);
@@ -9,14 +10,20 @@ void init(void);
 int main(void) {
 	init();
 
-	while (1) {
-	}
-	
+	PORTD = 0xFF;
+
+	lcd_putchar('a', NULL);
+
 	exit(0);
 }
 
 void init(void) {
+	DDRC = 0xFF;
+	PORTC = ~0x80;
+
 	lcd_init();
+
+	cli();
 
 	return;
 }
