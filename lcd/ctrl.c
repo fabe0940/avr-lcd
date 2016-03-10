@@ -9,7 +9,7 @@ void _lcd_set_ctrl_mode(uint8_t mode) {
 }
 
 void _lcd_set_data_mode(uint8_t mode) {
-	DDRB = mode;
+	DDRD = mode;
 	return;
 }
 

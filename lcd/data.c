@@ -6,11 +6,11 @@
 
 void _lcd_set_data(uint8_t dat) {
 	_lcd_set_data_mode(MODE_WRITE);
-	PORTB = dat;
+	PORTD = dat;
 	return;
 }
 
 uint8_t _lcd_get_data(void) {
 	_lcd_set_data_mode(MODE_READ);
-	return PINB;
+	return PIND;
 }
