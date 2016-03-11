@@ -1,6 +1,6 @@
 APPLICATION_NAME := avr-lcd
 CC := avr-gcc
-CFLAGS := -mmcu=atmega32 -Wall -Wextra -Wpedantic -O2 -DF_CPU=8000000UL
+CFLAGS := -mmcu=atmega32 -Wall -Wextra -Wpedantic -DF_CPU=8000000UL -O2
 SRC := $(wildcard *.c)
 OBJ := $(patsubst %.c, %.o, $(SRC))
 LCD_SRC := $(wildcard lcd/*.c)
@@ -32,7 +32,7 @@ $(LCD_OBJ) : $(LCD_SRC)
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
 
-avr-lcd.c : lcd/lcd.h
+avr-lcd.c : io.h
 
 clean :
 	\rm -f $(APPLICATION_NAME) $(APPLICATION_NAME).hex $(OBJ)

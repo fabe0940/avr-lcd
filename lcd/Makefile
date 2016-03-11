@@ -1,5 +1,5 @@
 CC := avr-gcc
-CFLAGS := -mmcu=atmega32 -Wall -Wextra -Wpedantic -O2 -DF_CPU=8000000UL
+CFLAGS := -mmcu=atmega32 -Wall -Wextra -Wpedantic -DF_CPU=8000000UL -O2
 SRC := $(wildcard *.c)
 OBJ := $(patsubst %.c, %.o, $(SRC))
 

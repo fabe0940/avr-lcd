@@ -1,39 +1,40 @@
-#include <avr/io.h>
 #include <avr/interrupt.h>
-#include <inttypes.h>
 #include <stdlib.h>
 #include <util/delay.h>
 #include "lcd/lcd.h"
+#include "io.h"
 
 void init(void);
 
 int main(void) {
+	const char* MSGS[] = {
+		"\rATMega32 LCD Display\nDemo - Homework 4",
+		"\rHello\nWorld!",
+		"\rWe choose to go to\nthe moon... not",
+		"\rbecause it is\neasy, but because it",
+		"\ris hard.\n  -JFK",
+	};
+	const uint8_t SIZE = 5;
+	uint8_t i;
+
 	init();
 
-	PORTD = 0xFF;
+	lcd_power(POWER_ON);
 
-	lcd_power(1);
-	lcd_clear();
-	lcd_putchar('H', NULL);
-	lcd_putchar('e', NULL);
-	lcd_putchar('l', NULL);
-	lcd_putchar('l', NULL);
-	lcd_putchar('o', NULL);
-	lcd_putchar('\n', NULL);
-	lcd_putchar('W', NULL);
-	lcd_putchar('o', NULL);
-	lcd_putchar('r', NULL);
-	lcd_putchar('l', NULL);
-	lcd_putchar('d', NULL);
-	lcd_putchar('!', NULL);
+	i = 0;
+	while (1) {
+		lcd_clear();
+		fprintf(stdlcd, "%s", MSGS[i]);
+
+		_delay_ms(2000);
+
+		i = (i + 1) % SIZE;
+	}
 
 	exit(0);
 }
 
 void init(void) {
-	DDRC = 0xFF;
-	PORTC = ~0x80;
-
 	lcd_init();
 
 	cli();
