@@ -1,9 +1,8 @@
 OVERVIEW
 ========
 
-This project is practice using interrupts. The upper 4 LEDs will be a binary
-counter triggering off of timer 0 interrupts. The lower 4 LEDs will be matched
-to the lower four switches, and this will be the main thread of execution.
+This project's purpose is to set up printf() to output to a LCD display.
+To this end, a series of quotations are cycled through and output to the LCD.
 
 
 COMPILING
@@ -42,16 +41,25 @@ As part of this assignment, we were asked to determine the size in bytes of
 each function used in this project. This data is most easily presented in a
 table.
 
-+-------------+------+
-| FUNCTION    | SIZE |
-+-------------+------+
-+-------------+------+
-
-
-DOCUMENTATION
-=============
-
-The manual for the ATMega32 is at http://www.atmel.com/Images/doc2503.pdf
++--------------------+------+
+| FUNCTION           | SIZE |
++--------------------+------+
+| _lcd_get_data      |    4 |
+| _lcd_read          |   58 |
+| _lcd_set_data      |    4 |
+| _lcd_set_ctrl      |   18 |
+| _lcd_set_data_mode |    4 |
+| _lcd_set_ctrl_mode |    4 |
+| _lcd_wait          |   12 |
+| _lcd_write         |   72 |
+| fputs              |   84 |
+| init               |    8 |
+| lcd_clear          |   14 |
+| lcd_init           |   66 |
+| lcd_power          |   24 |
+| lcd_putchar        |   50 |
+| main               |  126 |
++--------------------+------+
 
 
 CREDITS
